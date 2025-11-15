@@ -102,4 +102,6 @@ Ideal para empresas de pequeno e médio porte que desejam melhorar seu setor de 
 
 Projeto acadêmico — livre para uso educacional, testes e demonstrações.
 
+Projeto Criado em conjunto com: https://github.com/PotoXz
+
 ---
