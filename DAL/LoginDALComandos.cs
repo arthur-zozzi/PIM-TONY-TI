@@ -49,21 +49,21 @@ namespace TonyTI_Login.DAL
             tem = false;
             mensagem = "";
 
-            // 1) Valida o e-mail
+            // Valida o e-mail
             if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
                 this.mensagem = "E-mail inválido! Digite um e-mail válido.";
                 return mensagem;
             }
 
-            // 2) Confirmação de senha
+            // Confirmação de senha
             if (!senha.Equals(confSenha))
             {
                 this.mensagem = "Senhas não conferem!";
                 return mensagem;
             }
 
-            // 3) Validação da senha (mínimo 8 caracteres, letras e números)
+            // Validação da senha (mínimo 8 caracteres, letras e números)
             bool contemLetra = Regex.IsMatch(senha, @"[a-zA-Z]");
             bool contemNumero = Regex.IsMatch(senha, @"\d");
             if (senha.Length < 8 || !contemLetra || !contemNumero)
@@ -72,7 +72,7 @@ namespace TonyTI_Login.DAL
                 return mensagem;
             }
 
-            // 4) Verifica se já existe o e-mail
+            // Verifica se já existe o e-mail
             using (SqlCommand checkCmd = new SqlCommand())
             {
                 checkCmd.CommandText = "SELECT COUNT(*) FROM Usuarios WHERE email = @e";
@@ -98,7 +98,7 @@ namespace TonyTI_Login.DAL
                 }
             }
 
-            // 5) Se passou em todas as validações → cadastra
+            //  Se passou em todas as validações → cadastra
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.CommandText = "INSERT INTO Usuarios (email, senha) VALUES (@e, @s)";

@@ -7,13 +7,11 @@ namespace TonyTI_Login.Modelo
 {
     public class Controle
     {
-        public bool tem; // ✅ Indica se o login foi encontrado
-        public string mensagem = ""; // ✅ Guarda mensagens de erro
-        public string perfilUsuario = ""; // ✅ Guarda o perfil retornado do banco (Cliente/Técnico)
+        public bool tem; // Indica se o login foi encontrado
+        public string mensagem = ""; //  Guarda mensagens de erro
+        public string perfilUsuario = ""; // Guarda o perfil retornado do banco (Cliente/Técnico)
 
-        // ============================================
         // MÉTODO: VERIFICA LOGIN E RETORNA PERFIL
-        // ============================================
         public bool acessar(string login, string senha)
         {
             SqlCommand cmd = new SqlCommand();
@@ -38,7 +36,7 @@ namespace TonyTI_Login.Modelo
                     tem = true;
                     while (reader.Read())
                     {
-                        // ✅ Lê o valor do campo "Perfil" e salva
+                        // Lê o valor do campo "Perfil" e salva
                         perfilUsuario = reader["Perfil"].ToString().Trim();
 
                         // Caso venha vazio ou nulo, define Cliente como padrão
@@ -61,26 +59,24 @@ namespace TonyTI_Login.Modelo
             return tem;
         }
 
-        // ============================================
         // MÉTODO: CADASTRAR NOVO USUÁRIO
-        // ============================================
         public string cadastrar(string email, string senha, string confirmarSenha, string perfil = "Cliente")
         {
-            // ⚙️ Validação de campos obrigatórios
+            //  Validação de campos obrigatórios
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(senha) || string.IsNullOrWhiteSpace(confirmarSenha))
             {
                 this.tem = false;
                 return "Preencha todos os campos obrigatórios.";
             }
 
-            // ⚙️ Verifica se as senhas coincidem
+            //  Verifica se as senhas coincidem
             if (!senha.Equals(confirmarSenha))
             {
                 this.tem = false;
                 return "As senhas não coincidem.";
             }
 
-            // ⚙️ Verifica força mínima da senha
+            // Verifica força mínima da senha
             if (senha.Length < 8 || !senha.Any(char.IsLetter) || !senha.Any(char.IsDigit))
             {
                 this.tem = false;
@@ -91,7 +87,7 @@ namespace TonyTI_Login.Modelo
             {
                 Conexao con = new Conexao();
 
-                // ✅ Verifica se o e-mail já está cadastrado
+                // Verifica se o e-mail já está cadastrado
                 using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Usuarios WHERE Email = @Email", con.conectar()))
                 {
                     cmd.Parameters.AddWithValue("@Email", email);
@@ -105,7 +101,7 @@ namespace TonyTI_Login.Modelo
                     }
                 }
 
-                // ✅ Cadastra novo usuário com perfil (Cliente por padrão)
+                // Cadastra novo usuário com perfil (Cliente por padrão)
                 using (SqlCommand cmd = new SqlCommand("INSERT INTO Usuarios (Email, Senha, Perfil) VALUES (@Email, @Senha, @Perfil)", con.conectar()))
                 {
                     cmd.Parameters.AddWithValue("@Email", email);

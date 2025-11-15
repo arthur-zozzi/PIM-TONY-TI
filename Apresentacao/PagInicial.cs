@@ -9,12 +9,10 @@ namespace TonyTI_Login.Apresentacao
 {
     public partial class PagInicial : Form
     {
-        private readonly string emailLogado;    // ✅ E-mail do usuário logado
-        private readonly string perfilUsuario;  // ✅ Perfil do usuário logado (Técnico ou Cliente)
+        private readonly string emailLogado;    // E-mail do usuário logado
+        private readonly string perfilUsuario;  // Perfil do usuário logado (Técnico ou Cliente)
 
-        // =====================================================
-        // === CONSTRUTOR PRINCIPAL ===
-        // =====================================================
+        // CONSTRUTOR PRINCIPAL 
         public PagInicial(string email, string perfil)
         {
             InitializeComponent();
@@ -47,7 +45,7 @@ namespace TonyTI_Login.Apresentacao
             LoadUserControl(new InicioSistema(), true);
         }
 
-        // ✅ Construtor sem parâmetros (usado apenas no modo Design do VS)
+        // Construtor sem parâmetros (usado apenas no modo Design do VS)
         public PagInicial()
         {
             InitializeComponent();
@@ -64,9 +62,7 @@ namespace TonyTI_Login.Apresentacao
             catch { }
         }
 
-        // =====================================================
-        // === MÉTODOS AUXILIARES VISUAIS ===
-        // =====================================================
+        //  MÉTODOS AUXILIARES VISUAIS 
         private IEnumerable<Button> EnumerarBotoes(Control root)
         {
             foreach (Control c in root.Controls)
@@ -101,9 +97,7 @@ namespace TonyTI_Login.Apresentacao
             btn.BackColor = Color.PowderBlue;
         }
 
-        // =====================================================
-        // === QUICK BUTTONS SHOW/HIDE ===
-        // =====================================================
+       
         // lista dos controles rápidos que existem dentro do panelContainer (conforme seu Designer)
         private void ToggleQuickButtons(bool visible)
         {
@@ -121,9 +115,7 @@ namespace TonyTI_Login.Apresentacao
             }
         }
 
-        // =====================================================
-        // === LOAD USERCONTROL (não remove quick buttons) ===
-        // =====================================================
+  
         // carrega apenas UserControls em panelContainer; preserva outros controles (quick buttons, picturebox, label)
         private void LoadUserControl(UserControl tela, bool showQuickButtons)
         {
@@ -159,9 +151,8 @@ namespace TonyTI_Login.Apresentacao
             LoadUserControl(tela, false);
         }
 
-        // =====================================================
-        // === EVENTOS DE BOTÕES ===
-        // =====================================================
+       
+        // EVENTOS DE BOTÕES 
 
         private void btnHome_Click(object sender, EventArgs e)
         {
@@ -253,9 +244,7 @@ namespace TonyTI_Login.Apresentacao
                 Application.Exit();
         }
 
-        // =====================================================
-        // === EVENTOS DO FORMULÁRIO ===
-        // =====================================================
+        // EVENTOS DO FORMULÁRIO
 
         private void PagInicial_Load(object sender, EventArgs e)
         {

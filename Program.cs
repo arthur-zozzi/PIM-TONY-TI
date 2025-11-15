@@ -18,11 +18,11 @@ namespace TonyTI_Login
             // Mostra o login de forma modal
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                // ✅ Recupera o e-mail e o perfil do usuário logado
+                // Recupera o e-mail e o perfil do usuário logado
                 string emailLogado = loginForm.EmailUsuario;
                 string perfilLogado = loginForm.PerfilUsuario;
 
-                // ✅ Passa ambos para a página inicial
+                //  Passa ambos para a página inicial
                 Application.Run(new PagInicial(emailLogado, perfilLogado));
             }
             else
