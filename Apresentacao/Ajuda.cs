@@ -19,8 +19,7 @@ namespace TonyTI_Login.Apresentacao
             // Se quiser usar appsettings, leia via configuration
             if (string.IsNullOrWhiteSpace(apiKey))
             {
-                // para desenvolvimento, você pode colocar fallback (apenas local)
-                // apiKey = "COLOQUE_SUA_API_KEY_AQUI";
+              
                 MessageBox.Show("OpenAI API key não encontrada. Defina a variável de ambiente OPENAI_API_KEY.", "Configuração ausente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
