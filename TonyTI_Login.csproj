@@ -254,6 +254,7 @@
     <Compile Include="DAL\Conexao.cs" />
     <Compile Include="DAL\LoginDALComandos.cs" />
     <Compile Include="Modelo\Controle.cs" />
+    <Compile Include="Modelo\Services\OpenAIService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjetoLoginDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
